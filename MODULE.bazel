@@ -4,3 +4,6 @@ module(
     name = "perl_genrule_problem",
     version = "1"
 )
+
+
+bazel_dep(name = "rules_cc", version = "0.0.8")
