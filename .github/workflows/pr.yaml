@@ -4,12 +4,12 @@ name: Test
   pull_request: null
   push: null
 jobs:
-pr-test:
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-    runs-on: ${{ matrix.os }}
-    steps:
-      - run: bazel test //...
-  
+  pr-test:
+      strategy:
+        matrix:
+          os:
+            - ubuntu-latest
+      runs-on: ${{ matrix.os }}
+      steps:
+        - run: bazel test //...
+    
