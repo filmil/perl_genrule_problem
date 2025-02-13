@@ -11,5 +11,5 @@ jobs:
             - ubuntu-latest
       runs-on: ${{ matrix.os }}
       steps:
-        - run: cd perl_genrule_problem && bazel test //...
+        - run: tree && bazel test //...
     
