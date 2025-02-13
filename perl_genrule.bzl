@@ -55,6 +55,7 @@ perl_genrule = rule(
             allow_single_file = True,
             executable = True,
             cfg = "exec"
+            default = "//:perl_generate_file.sh"
         ),
     },
 )
