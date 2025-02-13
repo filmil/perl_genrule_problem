@@ -11,5 +11,7 @@ jobs:
             - ubuntu-latest
       runs-on: ${{ matrix.os }}
       steps:
+        - name: Checkout repo
+          uses: actions/checkout@main
         - run: tree && bazel test //...
     
