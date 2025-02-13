@@ -13,5 +13,5 @@ jobs:
       steps:
         - name: Checkout repo
           uses: actions/checkout@main
-        - run: chmod +x perl_generate_file.sh && bazel test //...
+        - run: chmod +x perl_generate_file.sh && bazel run :main
     
