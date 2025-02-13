@@ -12,7 +12,7 @@ cc_library(
     name = "wrapper",
     srcs = ["assembly.s"],
     hdrs = [],
-    deps = [":perlasm_genfiles"]
+    data = [":perlasm_genfiles"]
 )
 
 cc_binary(
