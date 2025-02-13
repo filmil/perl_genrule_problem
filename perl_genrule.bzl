@@ -54,7 +54,7 @@ perl_genrule = rule(
         "perl_generate_file": attr.label(
             allow_single_file = True,
             executable = True,
-            cfg = "exec"
+            cfg = "exec",
             default = "//:perl_generate_file.sh"
         ),
     },
