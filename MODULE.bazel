@@ -1,0 +1,6 @@
+"""Perl genrule example of problem
+"""
+module(
+    name = "perl_genrule_problem",
+    version = "1"
+)

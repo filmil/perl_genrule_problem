@@ -1,0 +1,11 @@
+ pr-test:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+    needs:
+      - pr-generate-nix
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: bazel test //...
+  
