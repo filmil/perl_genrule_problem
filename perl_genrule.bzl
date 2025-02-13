@@ -35,9 +35,8 @@ def _perl_genrule_impl(ctx):
     out_files = []
     
     for src, out in ctx.attr.srcs_to_outs.items():
-        if not src in ctx.attr.srcs_to_outs_exclude.keys():
-            out_as_file = run_generation(ctx, src, out, binary_invocation)
-            out_files.append(out_as_file)
+        out_as_file = run_generation(ctx, src, out, binary_invocation)
+        out_files.append(out_as_file)
 
     cc_info = CcInfo(
         compilation_context = cc_common.create_compilation_context(direct_private_headers = out_files),
