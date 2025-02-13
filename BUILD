@@ -1,5 +1,5 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
-load("]:perl_genrule.bzl", "perl_genrule")
+load("//:perl_genrule.bzl", "perl_genrule")
 
 perl_genrule(
     name = "perlasm_genfiles",
