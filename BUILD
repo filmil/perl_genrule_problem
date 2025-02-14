@@ -4,15 +4,14 @@ load("//:perl_genrule.bzl", "perl_genrule")
 perl_genrule(
     name = "perlasm_genfiles",
     srcs_to_outs = {
-        "assembly.pl": "assembly.s" 
+        "assembly.pl": "assembly.s",
     }
 )
 
 cc_library(
     name = "wrapper",
-    srcs = ["assembly.s"],
+    srcs = [":perlasm_genfiles"],
     hdrs = [],
-    data = [":perlasm_genfiles"]
 )
 
 cc_binary(

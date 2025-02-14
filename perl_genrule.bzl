@@ -15,25 +15,24 @@ def run_generation(ctx, src, out, binary_invocation):
         The output target as a file. Should only be one.
     """
     out_as_file = ctx.actions.declare_file(out)
-    src_files = src.files
+    src_file = src.files.to_list()[0]
     perl_generate_file = ctx.file.perl_generate_file
-    for src_as_file in src_files.to_list():
-        ctx.actions.run(
-            inputs = [src_as_file],
-            outputs = [out_as_file],
-            executable = perl_generate_file,
-            arguments = [binary_invocation, src_as_file.path, out_as_file.path, "elf"],
-            mnemonic = "GenerateAssemblyFromPerlScripts",
-            progress_message = "Generating file {} from script {}".format(out_as_file.path, src_as_file.path),
-            toolchain =
-                "@rules_perl//:current_toolchain",
-        )
+    ctx.actions.run(
+        inputs = [src_file],
+        outputs = [out_as_file],
+        executable = perl_generate_file,
+        arguments = [binary_invocation, src_file.path, out_as_file.path, "elf"],
+        mnemonic = "GenerateAssemblyFromPerlScripts",
+        progress_message = "Generating file {} from script {}".format(out_as_file.path, src_file.path),
+        toolchain =
+            "@rules_perl//:current_toolchain",
+    )
     return out_as_file
 
 def _perl_genrule_impl(ctx):
     binary_invocation = "perl"
     out_files = []
-    
+
     for src, out in ctx.attr.srcs_to_outs.items():
         out_as_file = run_generation(ctx, src, out, binary_invocation)
         out_files.append(out_as_file)
